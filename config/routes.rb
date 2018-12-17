@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   devise_for :users, controllers: {
-    sessions: 'users/sessions'
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
   }
 
-  resources :users
+  scope '/admin' do
+    resources :users
+  end
 
   get '/member', to: 'dashboard#member', as: 'member_dashboard'
   get '/admin', to: 'dashboard#admin', as: 'admin_dashboard'
