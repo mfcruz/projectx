@@ -39,4 +39,5 @@ RailsAdmin.config do |config|
     # history_show
   end
 
+  config.parent_controller = 'ApplicationController'
 end
