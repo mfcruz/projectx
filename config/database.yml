@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development: &development
+  <<: *default
+  database: projectx_development
+  host: localhost
+
+test:
+  <<: *default
+  database: project_test<%= ENV["TEST_DB_EXTENSION"] %><%= ENV["TEST_ENV_NUMBER"] %>
+  host: localhost
+
+production:
+  pool: <%= ENV["DB_POOL"] || 5 %>
+
+staging:
+  pool: <%= ENV["DB_POOL"] || 5 %>
